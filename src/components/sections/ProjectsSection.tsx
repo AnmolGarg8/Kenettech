@@ -1,7 +1,7 @@
 import { Reveal } from '../ui/Reveal';
 import { ArrowUpRight } from 'lucide-react';
-import { useState } from 'react';
-import Galaxy from '../ui/Galaxy';
+import React, { Suspense, useState } from 'react';
+const Galaxy = React.lazy(() => import('../ui/Galaxy'));
 
 export function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState('All Projects');
@@ -61,14 +61,16 @@ export function ProjectsSection() {
     <section id="projects" className="py-24 relative overflow-hidden bg-[#000000]">
       {/* Galaxy Background Animation */}
       <div className="absolute inset-0 z-0 opacity-50 pointer-events-none mix-blend-screen">
-        <Galaxy
-          mouseRepulsion={true}
-          mouseInteraction={true}
-          density={1.5}
-          glowIntensity={0.5}
-          saturation={0.8}
-          hueShift={240}
-        />
+        <Suspense fallback={null}>
+          <Galaxy
+            mouseRepulsion={true}
+            mouseInteraction={true}
+            density={1.5}
+            glowIntensity={0.5}
+            saturation={0.8}
+            hueShift={240}
+          />
+        </Suspense>
       </div>
 
       <div className="container px-6 lg:px-12 max-w-[1400px] mx-auto relative z-10">

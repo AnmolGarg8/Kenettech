@@ -1,5 +1,6 @@
+import React, { Suspense } from 'react';
 import { Reveal } from '../ui/Reveal';
-import DarkVeil from '../ui/DarkVeil';
+const DarkVeil = React.lazy(() => import('../ui/DarkVeil'));
 
 export function TestimonialsSection() {
   const avatars = [
@@ -15,15 +16,17 @@ export function TestimonialsSection() {
       
       {/* DarkVeil Background */}
       <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
-        <DarkVeil 
-          hueShift={-40}
-          noiseIntensity={0.2}
-          scanlineIntensity={0.1}
-          speed={0.5}
-          scanlineFrequency={0.0}
-          warpAmount={0.3}
-          resolutionScale={1}
-        />
+        <Suspense fallback={null}>
+          <DarkVeil 
+            hueShift={-40}
+            noiseIntensity={0.2}
+            scanlineIntensity={0.1}
+            speed={0.5}
+            scanlineFrequency={0.0}
+            warpAmount={0.3}
+            resolutionScale={1}
+          />
+        </Suspense>
       </div>
 
       <div className="container px-6 relative z-20 text-center max-w-5xl mx-auto flex-grow flex flex-col items-center justify-center">

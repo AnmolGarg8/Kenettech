@@ -1,5 +1,6 @@
+import React, { Suspense } from 'react';
 import { Reveal } from '../ui/Reveal';
-import ColorBends from '../ui/ColorBends';
+const ColorBends = React.lazy(() => import('../ui/ColorBends'));
 
 export function ProcessSection() {
   const steps = [
@@ -44,21 +45,23 @@ export function ProcessSection() {
     <section id="process" className="py-24 relative overflow-hidden bg-[#000000]">
       {/* ColorBends Background Animation */}
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none mix-blend-screen">
-        <ColorBends
-          colors={['#f97316', '#ec4899', '#9d4edd']}
-          rotation={90}
-          speed={0.2}
-          scale={1}
-          frequency={1}
-          warpStrength={1}
-          mouseInfluence={1}
-          noise={0.15}
-          parallax={0.5}
-          iterations={1}
-          intensity={1.5}
-          bandWidth={6}
-          transparent
-        />
+        <Suspense fallback={null}>
+          <ColorBends
+            colors={['#f97316', '#ec4899', '#9d4edd']}
+            rotation={90}
+            speed={0.2}
+            scale={1}
+            frequency={1}
+            warpStrength={1}
+            mouseInfluence={1}
+            noise={0.15}
+            parallax={0.5}
+            iterations={1}
+            intensity={1.5}
+            bandWidth={6}
+            transparent
+          />
+        </Suspense>
       </div>
 
       <div className="container px-6 lg:px-12 max-w-[1400px] mx-auto relative z-10">

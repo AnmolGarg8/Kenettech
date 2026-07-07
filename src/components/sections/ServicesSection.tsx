@@ -1,7 +1,8 @@
 import { Reveal } from '../ui/Reveal';
+import React, { Suspense } from 'react';
 import { Palette, Code2, Smartphone, TrendingUp, Monitor, Zap, ChevronRight } from 'lucide-react';
 
-import Ferrofluid from '../ui/Ferrofluid';
+const Ferrofluid = React.lazy(() => import('../ui/Ferrofluid'));
 
 export function ServicesSection() {
   const services = [
@@ -41,22 +42,24 @@ export function ServicesSection() {
     <section id="services" className="py-24 relative overflow-hidden bg-[#000000]">
       {/* Ferrofluid Background Animation */}
       <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
-        <Ferrofluid
-          colors={["#f97316", "#ec4899", "#9d4edd"]}
-          speed={0.5}
-          scale={1}
-          turbulence={1}
-          fluidity={0.1}
-          rimWidth={0.2}
-          sharpness={3}
-          shimmer={1}
-          glow={2}
-          flowDirection="down"
-          opacity={1}
-          mouseInteraction={true}
-          mouseStrength={1}
-          mouseRadius={0.3}
-        />
+        <Suspense fallback={null}>
+          <Ferrofluid
+            colors={["#f97316", "#ec4899", "#9d4edd"]}
+            speed={0.5}
+            scale={1}
+            turbulence={1}
+            fluidity={0.1}
+            rimWidth={0.2}
+            sharpness={3}
+            shimmer={1}
+            glow={2}
+            flowDirection="down"
+            opacity={1}
+            mouseInteraction={true}
+            mouseStrength={1}
+            mouseRadius={0.3}
+          />
+        </Suspense>
       </div>
 
       <div className="container px-6 lg:px-12 max-w-[1400px] mx-auto relative z-10">
