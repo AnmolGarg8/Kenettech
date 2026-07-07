@@ -1,88 +1,154 @@
 import { Reveal } from '../ui/Reveal';
+import { ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
+import Galaxy from '../ui/Galaxy';
 
 export function ProjectsSection() {
+  const [activeFilter, setActiveFilter] = useState('All Projects');
+
+  const filters = ['All Projects', 'Design', 'Development', 'Mobile'];
+
   const projects = [
     {
-      title: "Vision AI for Manufacturing",
-      category: "Computer Vision",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
+      title: "E-Commerce Platform",
+      description: "A Modern Shopping Experience With Seamless Checkout",
+      tags: ["React", "Node.js", "Stripe"],
+      category: "Development",
+      image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800"
     },
     {
-      title: "Global Supply Chain Analytics",
-      category: "Data Intelligence",
-      image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80&w=800"
+      title: "Brand Identity",
+      description: "Complete Rebrand For A Tech Startup",
+      tags: ["Branding", "UI/UX", "Strategy"],
+      category: "Design",
+      image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=800"
     },
     {
-      title: "Smart City Infrastructure",
-      category: "IoT & Edge",
-      image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&q=80&w=800"
+      title: "SaaS Dashboard",
+      description: "Analytics Platform With Real-Time Insights",
+      tags: ["Vue.js", "D3.js", "PostgreSQL"],
+      category: "Development",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
     },
     {
-      title: "Zero-Trust Financial Cloud",
-      category: "Cybersecurity",
+      title: "Mobile Banking App",
+      description: "Secure And Intuitive Banking On The Go",
+      tags: ["React Native", "Security", "FinTech"],
+      category: "Mobile",
       image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
     },
     {
-      title: "Predictive Maintenance System",
-      category: "Machine Learning",
-      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800"
+      title: "Portfolio Website",
+      description: "Complete Rebrand For A Tech Startup",
+      tags: ["Branding", "UI/UX", "Strategy"],
+      category: "Design",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
     },
     {
-      title: "Enterprise Core Modernization",
-      category: "Software Development",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+      title: "Fitness Tracker",
+      description: "Analytics Platform With Real-Time Insights",
+      tags: ["Vue.js", "D3.js", "PostgreSQL"],
+      category: "Mobile",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800"
     }
   ];
 
+  const filteredProjects = activeFilter === 'All Projects' 
+    ? projects 
+    : projects.filter(p => p.category === activeFilter);
+
   return (
-    <section id="projects" className="py-[120px] bg-white">
-      <div className="container px-4 mb-[60px]">
-        <Reveal direction="up">
-          <div className="flex flex-col md:flex-row justify-between items-end">
-            <div className="max-w-xl">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="h-[2px] w-8 bg-accent-purple"></div>
-                <p className="text-accent-purple font-semibold text-sm uppercase tracking-wider">Our Completed Projects</p>
-              </div>
-              <h2 className="text-[48px] font-display font-extrabold leading-[1.1] text-[#0f172a]">
-                Discover our latest <br/>innovative solutions
-              </h2>
-            </div>
-            <div className="max-w-md text-[#64748b] font-body mt-6 md:mt-0">
-              <p className="text-[16px] leading-[1.8]">Explore how we've helped global enterprises transform their operations, secure their infrastructure, and unlock new value through intelligent software.</p>
-            </div>
-          </div>
-        </Reveal>
+    <section id="projects" className="py-24 relative overflow-hidden bg-[#000000]">
+      {/* Galaxy Background Animation */}
+      <div className="absolute inset-0 z-0 opacity-50 pointer-events-none mix-blend-screen">
+        <Galaxy
+          mouseRepulsion={true}
+          mouseInteraction={true}
+          density={1.5}
+          glowIntensity={0.5}
+          saturation={0.8}
+          hueShift={240}
+        />
       </div>
 
-      {/* Tight Grid Layout */}
-      <div className="w-full px-2 max-w-[1920px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-1">
-          {projects.map((project, idx) => (
-            <Reveal key={idx} delay={idx * 0.1} direction="up">
-              <div className="relative h-[380px] overflow-hidden group cursor-pointer bg-gray-100">
+      <div className="container px-6 lg:px-12 max-w-[1400px] mx-auto relative z-10">
+        
+        {/* Header exact match */}
+        <div className="text-center mb-12">
+          <Reveal direction="up">
+            <p className="text-[#f97316] font-medium text-[16px] mb-2">Our Portfolio</p>
+            <h2 className="text-[36px] md:text-[48px] font-display font-bold text-white leading-tight">
+              Explore Our Latest Projects
+            </h2>
+          </Reveal>
+        </div>
+
+        {/* Filters exact match */}
+        <Reveal direction="up" delay={0.1}>
+          <div className="flex flex-wrap justify-center gap-3 mb-16">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-6 py-2.5 rounded-md text-[15px] font-medium transition-all duration-300 ${
+                  activeFilter === filter
+                    ? 'bg-gradient-to-r from-[#ec4899] to-[#f97316] text-white shadow-[0_4px_20px_rgba(236,72,153,0.3)]'
+                    : 'bg-white text-black hover:bg-white/90'
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* Projects Grid exact match */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project, idx) => (
+            <Reveal key={project.title} delay={0.1 + (idx * 0.1)} direction="up">
+              <div className="bg-[#171717] rounded-[24px] p-4 group hover:-translate-y-2 transition-transform duration-300 border border-white/5">
                 
-                {/* Image with zoom on hover */}
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  loading="lazy"
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[600ms] ease-out"
-                />
-                
-                {/* Purple gradient overlay fades in on hover */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(124,58,237,0.9)_0%,rgba(26,26,46,0.5)_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
-                
-                {/* Text Content fading in from bottom */}
-                <div className="absolute bottom-0 left-0 w-full p-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 ease-out z-10 flex flex-col justify-end h-full">
-                  <p className="text-white/70 text-xs font-semibold uppercase tracking-wider mb-2">{project.category}</p>
-                  <h4 className="text-white text-[22px] font-display font-bold leading-tight">{project.title}</h4>
+                {/* Image */}
+                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-5">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
                 </div>
-                
+
+                {/* Content */}
+                <div className="px-1 pb-2">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <h3 className="text-[20px] font-display font-medium text-white group-hover:text-[#f97316] transition-colors">
+                      {project.title}
+                    </h3>
+                    <ArrowUpRight className="w-5 h-5 text-white/50 group-hover:text-white transition-colors" />
+                  </div>
+                  
+                  <p className="text-[#a3a3a3] text-[14px] mb-5 line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map(tag => (
+                      <span 
+                        key={tag} 
+                        className="bg-white/10 text-white/70 text-[12px] font-medium px-3.5 py-1.5 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
               </div>
             </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -1,31 +1,46 @@
-import { ArrowRight } from 'lucide-react';
 import { Reveal } from '../ui/Reveal';
 
 export function CtaBanner() {
   return (
-    <section className="w-full bg-gradient-premium relative overflow-hidden py-[80px]">
-      {/* Subtle Dot Pattern Overlay */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 2px, transparent 2px)', backgroundSize: '30px 30px' }}></div>
+    <section className="py-32 relative overflow-hidden flex items-center justify-center min-h-[600px]">
       
-      <div className="container px-4 relative z-10">
-        <Reveal>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-white">
-              <p className="text-white/80 text-[16px] font-semibold tracking-wider uppercase mb-2">Ready to transform your enterprise?</p>
-              <h2 className="text-[36px] font-display font-extrabold leading-tight">
-                Let's discuss how Kenet Technologies <br className="hidden md:block" />can empower your business.
-              </h2>
-            </div>
-            <a 
-              href="#contact" 
-              className="inline-flex items-center space-x-3 bg-white text-[#1a1a2e] hover:text-accent-purple font-display font-bold py-[18px] px-10 text-[15px] uppercase tracking-wider transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] animate-float flex-shrink-0 rounded-sm group"
-            >
-              <span>Get a Free Consultation</span>
-              <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+      {/* Massive Abstract Glow Background */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center">
+        <div className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-accent-blue/30 via-accent-violet/20 to-transparent blur-[100px] mix-blend-screen animate-orb opacity-70"></div>
+        
+        {/* Wireframe / Grid Graphic overlay */}
+        <div className="absolute inset-0 opacity-20" style={{
+          backgroundImage: 'radial-gradient(circle at center, #3b82f6 1px, transparent 1px)',
+          backgroundSize: '40px 40px'
+        }}></div>
+      </div>
+
+      <div className="container px-4 relative z-10 text-center flex flex-col items-center">
+        <Reveal direction="up" delay={0.1}>
+          <h2 className="text-[40px] md:text-[64px] font-display font-bold text-white mb-6 max-w-4xl leading-tight tracking-tight">
+            Ready to turn AI hype into <br/>
+            <span className="text-gradient">business reality?</span>
+          </h2>
+        </Reveal>
+
+        <Reveal direction="up" delay={0.2}>
+          <p className="text-[16px] text-color-text-muted max-w-2xl mx-auto mb-10">
+            Schedule a 20-minute strategy audit. We'll find three specific areas where AI can reduce your costs this quarter.
+          </p>
+        </Reveal>
+
+        <Reveal direction="up" delay={0.3}>
+          <div className="flex flex-col items-center space-y-4">
+            <a href="#audit" className="bg-gradient-premium text-white px-10 py-4 rounded-full text-[14px] font-bold tracking-widest uppercase hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] transition-all duration-300">
+              Claim Your Free Audit
             </a>
+            <p className="text-[12px] text-white/30 uppercase tracking-widest">
+              No commitment required • 100% Confidential • GDPR compliant
+            </p>
           </div>
         </Reveal>
       </div>
+      
     </section>
   );
 }

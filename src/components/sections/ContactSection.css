@@ -1,0 +1,22 @@
+.contact-matte-bg {
+  background: linear-gradient(135deg, #050505, #111111, #0a0a0a, #161616);
+  background-size: 400% 400%;
+  animation: matteFlow 15s ease infinite;
+}
+
+@keyframes matteFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Checkmark visibility trick for custom checkbox */
+input[type="checkbox"]:checked + .checkmark {
+  opacity: 1;
+}

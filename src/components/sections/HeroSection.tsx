@@ -1,185 +1,117 @@
-import { useState, useEffect } from 'react';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Reveal } from '../ui/Reveal';
 
 export function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
-    {
-      subtitle: "Experience Intelligent Software Solutions",
-      titleLine1: "WE SEE WHAT",
-      titleLine2: "OTHERS MISS",
-      hasAccent: true,
-      buttonText: "Explore Services",
-      buttonLink: "#services",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2000"
-    },
-    {
-      subtitle: "AI • DATA • CLOUD • IOT",
-      titleLine1: "INTELLIGENT",
-      titleLine2: "SOLUTIONS",
-      hasAccent: false,
-      buttonText: "View Projects",
-      buttonLink: "#projects",
-      image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=2000"
-    },
-    {
-      subtitle: "NETRA — THE EYE OF INNOVATION",
-      titleLine1: "PRECISION",
-      titleLine2: "& INSIGHT",
-      hasAccent: false,
-      buttonText: "Get In Touch",
-      buttonLink: "#contact",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000"
-    }
+  const logos = [
+    { name: "UNITED NATIONS FOUNDATION", img: "https://upload.wikimedia.org/wikipedia/commons/e/ee/UN_Foundation_logo.svg" },
+    { name: "14 Advisors", img: null },
+    { name: "RITZY ROOM", img: null },
+    { name: "enovara", img: null },
+    { name: "Cornell University", img: "https://upload.wikimedia.org/wikipedia/commons/4/47/Cornell_University_seal.svg" },
+    { name: "SAND VALLEY", img: null },
+    { name: "park _side.", img: null },
   ];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 8000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <section id="hero" className="relative w-full h-[800px] lg:h-[900px] overflow-hidden flex items-center bg-black">
+    <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#000000] pt-20">
       
-      {/* Background Images with Crossfade and Ken Burns Zoom */}
-      <AnimatePresence initial={false}>
-        <motion.div 
-          key={currentSlide}
-          initial={{ opacity: 0, scale: 1 }}
-          animate={{ opacity: 1, scale: 1.08 }}
-          exit={{ opacity: 0, scale: 1 }}
-          transition={{ opacity: { duration: 1 }, scale: { duration: 8, ease: "linear" } }}
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url("${slides[currentSlide].image}")`, filter: 'brightness(0.6)' }}
-        />
-      </AnimatePresence>
-
-      {/* Floating Gradient Orbs */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-accent-purple/10 rounded-full blur-[100px] animate-orb"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-[#6c2bd9]/10 rounded-full blur-[120px] animate-orb" style={{ animationDelay: '2s' }}></div>
-      </div>
-
-      {/* Dramatic Diagonal Overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-10"
-        style={{ 
-          clipPath: 'polygon(0 0, 65% 0, 45% 100%, 0 100%)',
-          background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.85), rgba(10, 10, 26, 0.9))'
-        }}
-      ></div>
-
-      <div className="container px-4 relative z-20 flex justify-between items-center h-full pt-16">
+      {/* Dark Theme Background Setup */}
+      <div className="absolute inset-0 z-0 bg-[#000000]">
         
-        {/* Text Content */}
-        <div className="max-w-3xl text-white pt-24 h-full relative w-full">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              className="absolute w-full"
-            >
-              <motion.div 
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -30, opacity: 0 }}
-                transition={{ duration: 0.8, delay: 0, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center space-x-4 mb-6"
-              >
-                <div className="h-[2px] w-12 bg-white"></div>
-                <p className="tracking-[0.2em] text-sm font-semibold uppercase">{slides[currentSlide].subtitle}</p>
-                <div className="h-[2px] w-12 bg-white"></div>
-              </motion.div>
-              
-              <motion.h1 
-                initial={{ y: 40, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -40, opacity: 0 }}
-                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="text-6xl md:text-[80px] lg:text-[100px] font-display font-black leading-[1.05] mb-12 uppercase tracking-tight"
-              >
-                {slides[currentSlide].titleLine1} <br/> 
-                {slides[currentSlide].hasAccent ? (
-                  <>
-                    OTHERS <span className="font-black italic text-[#a78bfa]" style={{ textShadow: '0 0 40px rgba(124, 58, 237, 0.5)' }}>MISS</span>
-                  </>
-                ) : (
-                  <span className="font-black italic text-[#a78bfa]" style={{ textShadow: '0 0 40px rgba(124, 58, 237, 0.5)' }}>{slides[currentSlide].titleLine2}</span>
-                )}
-              </motion.h1>
-              
-              <motion.div 
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -30, opacity: 0 }}
-                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center space-x-6 relative"
-              >
-                <a 
-                  href={slides[currentSlide].buttonLink} 
-                  className="inline-flex items-center space-x-3 bg-accent-purple hover:bg-[#6c2bd9] text-white font-display font-bold py-[18px] px-12 text-sm uppercase tracking-wider transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(124,58,237,0.4)] relative overflow-hidden group"
-                >
-                  <span className="relative z-10">{slides[currentSlide].buttonText}</span>
-                  <ArrowRight className="w-4 h-4 relative z-10 transform group-hover:translate-x-1 transition-transform" />
-                  <div className="absolute inset-0 w-0 bg-white/10 group-hover:w-full transition-all duration-300 ease-out z-0"></div>
-                </a>
-                
-                {/* Decorative Doodle Arrow */}
-                <svg className="w-16 h-16 text-white/40 absolute left-[300px] -bottom-8 transform -rotate-12" fill="none" viewBox="0 0 100 100" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10,80 Q40,90 70,50 T90,10 M70,10 L90,10 L90,30" />
-                </svg>
-              </motion.div>
-            </motion.div>
-          </AnimatePresence>
+        {/* Massive Red/Orange Glow behind text (Top Left) */}
+        <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-[#661100] blur-[150px] rounded-full mix-blend-screen opacity-80 pointer-events-none"></div>
+        <div className="absolute top-[10%] left-[0%] w-[500px] h-[500px] bg-[#aa2211] blur-[150px] rounded-full mix-blend-screen opacity-50 pointer-events-none"></div>
+
+        {/* The Wave / Mountain shape at the bottom */}
+        {/* We use a dark gradient curve to mimic the shape of the wave without using unpredictable Unsplash images */}
+        <div className="absolute bottom-0 left-0 w-full h-[60vh] pointer-events-none overflow-hidden">
+           <div className="absolute bottom-[-20%] left-[-10%] w-[120%] h-[120%] rounded-[100%] bg-gradient-to-t from-black via-[#0a0a0a] to-transparent border-t-[2px] border-accent-pink/30 shadow-[0_-50px_100px_rgba(236,72,153,0.1)]"></div>
+           <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[100%] rounded-[100%] bg-gradient-to-t from-black via-[#111] to-transparent border-t-[4px] border-accent-orange/40 shadow-[0_-50px_150px_rgba(249,115,22,0.15)] transform rotate-12"></div>
+           
+           {/* Subtle highlight lines */}
+           <div className="absolute bottom-[30%] right-[30%] w-[400px] h-[200px] bg-accent-orange/20 blur-[100px] rounded-full mix-blend-screen"></div>
+           <div className="absolute bottom-[20%] left-[40%] w-[300px] h-[150px] bg-accent-pink/20 blur-[100px] rounded-full mix-blend-screen"></div>
         </div>
 
-        {/* Navigation Controls (Right side) */}
-        <div className="hidden lg:flex flex-col items-center space-y-12 mr-8 z-30">
+        {/* Abstract Glowing Orb (Top Right) */}
+        <div className="absolute top-[20%] right-[15%] w-24 h-24 z-10 animate-float opacity-80 pointer-events-none hidden lg:block">
+           <div className="relative w-full h-full">
+             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#9d4edd] to-[#f97316] blur-[2px]"></div>
+             <div className="absolute inset-1 rounded-full bg-black"></div>
+             {/* Wireframe lines effect */}
+             <div className="absolute inset-0 rounded-full border border-white/20 transform rotate-45 scale-90"></div>
+             <div className="absolute inset-0 rounded-full border border-accent-orange/40 transform -rotate-45 scale-95"></div>
+             <div className="absolute inset-0 rounded-full border border-accent-pink/40 transform rotate-90 scale-95"></div>
+             {/* Core glow */}
+             <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#9d4edd] to-[#f97316] blur-[15px] opacity-60"></div>
+           </div>
+        </div>
+      </div>
+
+      <div className="container px-6 lg:px-12 relative z-20 mx-auto flex-grow flex flex-col justify-center">
+        
+        {/* Main Content (Left Aligned exactly like image) */}
+        {/* Set max-w-none to prevent "We Design Websites" from wrapping early */}
+        <div className="w-full max-w-[900px]">
+          <Reveal direction="up" delay={0.1}>
+            <h1 className="text-[60px] sm:text-[72px] md:text-[84px] lg:text-[96px] font-display font-bold leading-[1.1] tracking-tight text-white mb-6 whitespace-nowrap">
+              We Design <span className="text-gradient">Websites</span><br/>
+              That Grow Businesses.
+            </h1>
+          </Reveal>
+
+          <Reveal direction="up" delay={0.2}>
+            <p className="text-[16px] md:text-[18px] text-white/70 max-w-[650px] mb-10 leading-relaxed font-medium">
+              Transform Your Brand With Stunning Web Design, Innovative Development, And Data-Driven Strategies That Deliver Real Results.
+            </p>
+          </Reveal>
+
+          <Reveal direction="up" delay={0.3}>
+            <a href="#about" className="inline-flex items-center justify-center bg-gradient-primary text-white px-8 py-3.5 rounded-lg text-[15px] font-medium transition-all duration-300 hover:scale-105 shadow-[0_4px_30px_rgba(236,72,153,0.4)] border border-white/10">
+              Start Your Project
+            </a>
+          </Reveal>
+        </div>
+      </div>
+
+      {/* Client Logos Marquee (Exactly at the bottom) */}
+      <div className="w-full bg-transparent relative z-20 py-8 border-t border-white/5 mt-auto">
+        <div className="flex overflow-hidden relative w-full">
+          {/* Fading Edges */}
+          <div className="absolute top-0 left-0 w-32 md:w-64 h-full bg-gradient-to-r from-[#000000] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-32 md:w-64 h-full bg-gradient-to-l from-[#000000] to-transparent z-10 pointer-events-none"></div>
           
-          <div className="flex flex-col space-y-4">
-            <button 
-              onClick={prevSlide}
-              className="w-[52px] h-[52px] rounded-full border-2 border-white/30 bg-white/5 flex items-center justify-center text-white backdrop-blur-sm transition-all duration-300 hover:border-accent-purple hover:bg-accent-purple/20 hover:scale-110"
-              aria-label="Previous Slide"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-            <button 
-              onClick={nextSlide}
-              className="w-[52px] h-[52px] rounded-full border-2 border-white/30 bg-white/5 flex items-center justify-center text-white backdrop-blur-sm transition-all duration-300 hover:border-accent-purple hover:bg-accent-purple/20 hover:scale-110"
-              aria-label="Next Slide"
-            >
-              <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
-          
-          {/* Slide Indicators (Pills) */}
-          <div className="flex flex-col space-y-3">
-            {slides.map((_, idx) => (
-              <button 
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`transition-all duration-500 rounded-full ${
-                  currentSlide === idx 
-                    ? 'w-1.5 h-[32px] bg-accent-purple shadow-[0_0_15px_rgba(124,58,237,0.6)]' 
-                    : 'w-1.5 h-[10px] bg-white/40 hover:bg-white/60'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
+          <div className="flex animate-marquee whitespace-nowrap min-w-full items-center justify-around">
+            {logos.map((logo, idx) => (
+              <div key={idx} className="mx-8 md:mx-12 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0">
+                 {logo.img ? (
+                    <div className="flex items-center space-x-3">
+                       <img src={logo.img} alt={logo.name} className="h-6 md:h-8 object-contain filter invert opacity-80" />
+                       <span className="text-[16px] md:text-[18px] font-display font-medium text-white">{logo.name}</span>
+                    </div>
+                 ) : (
+                    <span className="text-[16px] md:text-[20px] font-display font-medium tracking-wide text-white">
+                      {logo.name}
+                    </span>
+                 )}
+              </div>
             ))}
           </div>
-
+          <div className="flex animate-marquee whitespace-nowrap min-w-full absolute left-full top-0 items-center justify-around h-full">
+            {logos.map((logo, idx) => (
+               <div key={`dup-${idx}`} className="mx-8 md:mx-12 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0">
+                 {logo.img ? (
+                    <div className="flex items-center space-x-3">
+                       <img src={logo.img} alt={logo.name} className="h-6 md:h-8 object-contain filter invert opacity-80" />
+                       <span className="text-[16px] md:text-[18px] font-display font-medium text-white">{logo.name}</span>
+                    </div>
+                 ) : (
+                    <span className="text-[16px] md:text-[20px] font-display font-medium tracking-wide text-white">
+                      {logo.name}
+                    </span>
+                 )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

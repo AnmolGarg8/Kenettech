@@ -1,36 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-display: 'Poppins', sans-serif;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  --color-bg-dark: #0a0a1a;
-  --color-bg-card: #1a1824;
-  --color-accent-purple: #7c3aed;
-  --color-accent-light: #a78bfa;
-  --color-text-light: #fafafa;
-  --color-text-muted: #64748b;
-  --color-border: #2d2a38;
+  --color-bg-dark: #000000;
+  --color-bg-card: #0a0a0a;
+  --color-accent-pink: #ec4899;
+  --color-accent-orange: #f97316;
+  --color-text-light: #ffffff;
+  --color-text-muted: #a1a1aa;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: var(--color-bg-dark);
   }
   body {
     font-family: var(--font-body);
     font-size: 16px;
-    line-height: 1.8;
+    line-height: 1.6;
     color: var(--color-text-muted);
-    background-color: #fafafa;
+    background-color: var(--color-bg-dark);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
-    color: #0f172a;
+    color: #ffffff;
   }
-  /* Global Cursor Setting */
   button, a, [role="button"] {
     cursor: pointer;
   }
@@ -38,69 +37,35 @@
 
 @layer components {
   .container {
-    max-width: 1280px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
   }
 }
 
-/* Custom Utilities for Overhaul */
+/* Custom Utilities for Pink/Orange Theme */
 .text-gradient {
-  background: linear-gradient(135deg, #7c3aed, #6c2bd9);
+  background: linear-gradient(to right, #ec4899, #f97316);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.bg-gradient-premium {
-  background: linear-gradient(135deg, #7c3aed, #6c2bd9);
+.bg-gradient-primary {
+  background: linear-gradient(to right, #ec4899, #f97316);
 }
 
-.glow-purple {
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+.card-dark {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
 }
 
-.glow-purple-lg {
-  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.4);
+.card-dark:hover {
+  border-color: rgba(249, 115, 22, 0.2);
+  box-shadow: 0 10px 40px -10px rgba(236, 72, 153, 0.1);
 }
 
-.glass-panel {
-  background: rgba(10, 10, 26, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-/* Shimmer animation for top bar */
-@keyframes shimmer {
-  0% { background-position: -1000px 0; }
-  100% { background-position: 1000px 0; }
-}
-.animate-shimmer {
-  background: linear-gradient(to right, #08081a 4%, #11112b 25%, #08081a 36%);
-  background-size: 1000px 100%;
-  animation: shimmer 10s infinite linear;
-}
-
-/* Floating animation */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* Pulse ring */
-@keyframes pulse-ring {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
-}
-.animate-pulse-ring {
-  animation: pulse-ring 2s infinite ease-in-out;
-}
-
-/* Marquee */
+/* Animations */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -109,13 +74,10 @@
   animation: marquee 30s linear infinite;
 }
 
-/* Orb float */
-@keyframes orbFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
-.animate-orb {
-  animation: orbFloat 12s infinite ease-in-out;
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }

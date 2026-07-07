@@ -21,7 +21,7 @@ export function Reveal({ children, width = '100%', direction = 'up', delay = 0 }
   };
 
   return (
-    <div style={{ width, overflow: 'hidden' }}>
+    <div style={{ width, position: 'relative' }}>
       <motion.div
         variants={getVariants()}
         initial="hidden"
