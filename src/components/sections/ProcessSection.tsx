@@ -45,7 +45,7 @@ export function ProcessSection() {
   return (
     <section id="process" className="py-24 relative overflow-hidden bg-[#000000]">
       {/* ColorBends Background Animation */}
-      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none mix-blend-screen">
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
         <Suspense fallback={null}>
           <MemoizedColorBends
             colors={['#f97316', '#ec4899', '#9d4edd']}

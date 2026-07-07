@@ -42,7 +42,7 @@ export function ServicesSection() {
   return (
     <section id="services" className="py-24 relative overflow-hidden bg-[#000000]">
       {/* Ferrofluid Background Animation */}
-      <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
         <Suspense fallback={null}>
           <MemoizedFerrofluid
             colors={["#f97316", "#ec4899", "#9d4edd"]}

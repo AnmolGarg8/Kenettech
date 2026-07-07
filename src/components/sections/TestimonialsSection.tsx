@@ -9,7 +9,7 @@ export function TestimonialsSection() {
     <section className="py-32 relative overflow-hidden bg-[#000000] flex flex-col justify-center min-h-[600px]">
       
       {/* DarkVeil Background */}
-      <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
         <Suspense fallback={null}>
           <MemoizedDarkVeil 
             hueShift={-40}

@@ -6,7 +6,7 @@ export function CtaBanner() {
       
       {/* Massive Abstract Glow Background */}
       <div className="absolute inset-0 z-0 flex items-center justify-center">
-        <div className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-accent-blue/30 via-accent-violet/20 to-transparent blur-[100px] mix-blend-screen animate-orb opacity-70"></div>
+        <div className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-accent-blue/30 via-accent-violet/20 to-transparent blur-[100px] animate-orb opacity-70"></div>
         
         {/* Wireframe / Grid Graphic overlay */}
         <div className="absolute inset-0 opacity-20" style={{

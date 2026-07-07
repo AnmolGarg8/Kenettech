@@ -61,7 +61,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-24 relative overflow-hidden bg-[#000000]">
       {/* Galaxy Background Animation */}
-      <div className="absolute inset-0 z-0 opacity-50 pointer-events-none mix-blend-screen">
+      <div className="absolute inset-0 z-0 opacity-50 pointer-events-none">
         <Suspense fallback={null}>
           <MemoizedGalaxy
             mouseRepulsion={true}
