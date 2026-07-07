@@ -48,6 +48,14 @@ export function ProjectsSection() {
       category: "Web",
       image: "/images/project-moncy.png",
       liveUrl: "https://moncy.dev/"
+    },
+    {
+      title: "NoteNetra",
+      description: "AI-driven software product built by Kenet Technologies",
+      tags: ["AI", "Web App", "Product"],
+      category: "Web",
+      image: "/images/project-notenetra.png",
+      liveUrl: "https://notenetra.in/"
     }
   ];
 
