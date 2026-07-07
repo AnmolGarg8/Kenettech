@@ -2,13 +2,10 @@ import { Reveal } from '../ui/Reveal';
 
 export function HeroSection() {
   const logos = [
-    { name: "UNITED NATIONS FOUNDATION", img: "https://upload.wikimedia.org/wikipedia/commons/e/ee/UN_Foundation_logo.svg" },
-    { name: "14 Advisors", img: null },
-    { name: "RITZY ROOM", img: null },
-    { name: "enovara", img: null },
-    { name: "Cornell University", img: "https://upload.wikimedia.org/wikipedia/commons/4/47/Cornell_University_seal.svg" },
-    { name: "SAND VALLEY", img: null },
-    { name: "park _side.", img: null },
+    { name: "TOP 10 — SAMSUNG SOLVE FOR TOMORROW 2025", img: null },
+    { name: "1ST PLACE — SUPERNOVA HACKATHON", img: null },
+    { name: "NATIONAL FINALIST — INDIA INNOVATES 2026", img: null },
+    { name: "PITCHED AT FITT, IIT DELHI", img: null },
   ];
 
   return (

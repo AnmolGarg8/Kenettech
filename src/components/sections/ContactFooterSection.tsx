@@ -9,11 +9,21 @@ export function ContactFooterSection() {
     lastName: '',
     email: '',
     phone: '',
+    country: 'IN',
     message: '',
     privacy: false
   });
+  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const countryOptions = [
+    { code: 'IN', prefix: '+91' },
+    { code: 'US', prefix: '+1' },
+    { code: 'GB', prefix: '+44' },
+    { code: 'AU', prefix: '+61' },
+    { code: 'CA', prefix: '+1' },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +39,7 @@ export function ContactFooterSection() {
     
     setIsSubmitting(false);
     setIsSubmitted(true);
-    setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '', privacy: false });
+    setFormData({ firstName: '', lastName: '', email: '', phone: '', country: 'IN', message: '', privacy: false });
     
     // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
@@ -127,16 +137,38 @@ export function ContactFooterSection() {
                 </div>
 
                 {/* Phone */}
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 relative z-20">
                   <label className="text-white text-[15px]">Phone number</label>
-                  <div className="flex bg-[#050505] rounded-lg overflow-hidden border border-transparent focus-within:border-white/20 transition-colors">
-                    <div className="flex items-center px-4 border-r border-white/5 cursor-pointer hover:bg-white/5 transition-colors">
-                      <span className="text-white text-[15px] mr-2">US</span>
+                  <div className="flex bg-[#050505] rounded-lg border border-transparent focus-within:border-white/20 transition-colors relative">
+                    <div 
+                      className="flex items-center px-4 border-r border-white/5 cursor-pointer hover:bg-white/5 transition-colors"
+                      onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
+                    >
+                      <span className="text-white text-[15px] mr-2">{formData.country}</span>
                       <ChevronDown className="w-4 h-4 text-white/50" />
                     </div>
+                    
+                    {isCountryDropdownOpen && (
+                      <div className="absolute top-full left-0 mt-2 w-32 bg-[#1e1e1e] border border-white/10 rounded-lg shadow-xl z-50 overflow-hidden">
+                        {countryOptions.map(option => (
+                          <div 
+                            key={option.code}
+                            className="px-4 py-2.5 text-white text-[14px] hover:bg-white/10 cursor-pointer transition-colors flex items-center justify-between"
+                            onClick={() => {
+                              setFormData({...formData, country: option.code});
+                              setIsCountryDropdownOpen(false);
+                            }}
+                          >
+                            <span>{option.code}</span>
+                            <span className="text-white/50">{option.prefix}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
                     <input 
                       type="tel" 
-                      placeholder="+1 (555) 000-0000"
+                      placeholder={`${countryOptions.find(opt => opt.code === formData.country)?.prefix} (555) 000-0000`}
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       className="bg-transparent text-white px-4 py-3.5 w-full outline-none placeholder:text-[#555]"
