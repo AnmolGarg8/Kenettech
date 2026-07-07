@@ -31,17 +31,19 @@ export function Navbar() {
     >
       <div className="container px-6 flex items-center justify-between">
         
-        {/* Logo matching the image: Circle with orange gradient icon, text Kenet Technologies + orange dot */}
-        <a href="#" className="flex items-center space-x-2 group">
-          <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center relative overflow-hidden flex-shrink-0">
-             {/* Mimic the logo graphic */}
-             <div className="absolute inset-[2px] bg-black rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 border-2 border-accent-orange rounded-full"></div>
-             </div>
+        {/* New Professional Logo */}
+        <a href="#" className="flex items-center space-x-3 group">
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-[#ec4899] to-[#f97316] p-[1.5px] flex-shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(236,72,153,0.3)]">
+            <div className="w-full h-full bg-[#050505] rounded-[6.5px] flex items-center justify-center">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 3v18" />
+                <path d="M20 4 10 12l10 8" />
+              </svg>
+            </div>
           </div>
-          <div className="flex items-baseline">
-            <span className="text-xl font-display font-bold text-white tracking-tight">Kenet Technologies</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-orange ml-1 flex-shrink-0"></span>
+          <div className="flex flex-col">
+            <span className="text-[19px] font-display font-bold text-white tracking-tight leading-none mb-0.5">Kenet</span>
+            <span className="text-[11px] font-medium text-white/50 tracking-widest leading-none uppercase">Technologies</span>
           </div>
         </a>
 
@@ -60,8 +62,12 @@ export function Navbar() {
 
         {/* Action Button */}
         <div className="hidden md:flex">
-          <a href="#contact" className="bg-gradient-primary text-white px-6 py-2.5 rounded-full text-[13px] font-bold transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(236,72,153,0.3)]">
-            Let's Talk
+          <a href="#contact" className="relative px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 backdrop-blur-md text-white text-[13px] font-medium transition-all duration-300 group overflow-hidden">
+            <span className="relative z-10 flex items-center gap-2">
+              Start a Project
+              <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#ec4899]/20 to-[#f97316]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </a>
         </div>
 
@@ -82,7 +88,7 @@ export function Navbar() {
             <a key={link.name} href={link.href} className="text-white text-lg font-medium">{link.name}</a>
           ))}
           <div className="pt-4 border-t border-white/10 flex flex-col">
-            <a href="#contact" className="bg-gradient-primary text-white px-6 py-3 rounded-full text-center font-bold">Let's Talk</a>
+            <a href="#contact" className="bg-[#111] border border-white/10 text-white px-6 py-3 rounded-full text-center font-medium hover:bg-[#222] transition-colors">Start a Project</a>
           </div>
         </div>
       )}

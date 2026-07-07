@@ -11,8 +11,8 @@ export function AboutSection() {
             <div className="relative rounded-[2rem] overflow-hidden aspect-[4/4.5] lg:aspect-square group max-w-xl mx-auto lg:mx-0 w-full">
               {/* Finding a similar image of women working at a table */}
               <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1000" 
-                alt="Team working" 
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000" 
+                alt="Tech Team Collaborating" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-90 contrast-125"
                 loading="lazy"
               />

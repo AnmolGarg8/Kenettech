@@ -146,13 +146,19 @@ export function ContactFooterSection() {
         <div className="flex flex-col items-center justify-center pt-8">
           
           {/* Logo */}
-          <div className="flex items-center space-x-2 mb-8">
-             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#ec4899] to-[#f97316] flex items-center justify-center p-0.5">
-               <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-[14px]">K</span>
-               </div>
-             </div>
-             <span className="text-[20px] font-bold text-white tracking-tight">Kenet Technologies</span>
+          <div className="flex items-center space-x-3 mb-8 group">
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-[#ec4899] to-[#f97316] p-[1.5px] flex-shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(236,72,153,0.3)]">
+              <div className="w-full h-full bg-[#050505] rounded-[6.5px] flex items-center justify-center">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 3v18" />
+                  <path d="M20 4 10 12l10 8" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[19px] font-display font-bold text-white tracking-tight leading-none mb-0.5">Kenet</span>
+              <span className="text-[11px] font-medium text-white/50 tracking-widest leading-none uppercase">Technologies</span>
+            </div>
           </div>
 
           {/* Links */}
