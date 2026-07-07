@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Reveal } from '../ui/Reveal';
 const ColorBends = React.lazy(() => import('../ui/ColorBends'));
+const MemoizedColorBends = React.memo(ColorBends);
 
 export function ProcessSection() {
   const steps = [
@@ -46,7 +47,7 @@ export function ProcessSection() {
       {/* ColorBends Background Animation */}
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none mix-blend-screen">
         <Suspense fallback={null}>
-          <ColorBends
+          <MemoizedColorBends
             colors={['#f97316', '#ec4899', '#9d4edd']}
             rotation={90}
             speed={0.2}

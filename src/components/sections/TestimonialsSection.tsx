@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Reveal } from '../ui/Reveal';
 const DarkVeil = React.lazy(() => import('../ui/DarkVeil'));
+const MemoizedDarkVeil = React.memo(DarkVeil);
 
 export function TestimonialsSection() {
   const avatars = [
@@ -17,7 +18,7 @@ export function TestimonialsSection() {
       {/* DarkVeil Background */}
       <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
         <Suspense fallback={null}>
-          <DarkVeil 
+          <MemoizedDarkVeil 
             hueShift={-40}
             noiseIntensity={0.2}
             scanlineIntensity={0.1}

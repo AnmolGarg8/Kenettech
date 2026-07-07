@@ -3,6 +3,7 @@ import React, { Suspense } from 'react';
 import { Palette, Code2, Smartphone, TrendingUp, Monitor, Zap, ChevronRight } from 'lucide-react';
 
 const Ferrofluid = React.lazy(() => import('../ui/Ferrofluid'));
+const MemoizedFerrofluid = React.memo(Ferrofluid);
 
 export function ServicesSection() {
   const services = [
@@ -43,7 +44,7 @@ export function ServicesSection() {
       {/* Ferrofluid Background Animation */}
       <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
         <Suspense fallback={null}>
-          <Ferrofluid
+          <MemoizedFerrofluid
             colors={["#f97316", "#ec4899", "#9d4edd"]}
             speed={0.5}
             scale={1}

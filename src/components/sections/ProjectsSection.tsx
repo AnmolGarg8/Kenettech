@@ -2,6 +2,7 @@ import { Reveal } from '../ui/Reveal';
 import { ArrowUpRight } from 'lucide-react';
 import React, { Suspense, useState } from 'react';
 const Galaxy = React.lazy(() => import('../ui/Galaxy'));
+const MemoizedGalaxy = React.memo(Galaxy);
 
 export function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState('All Projects');
@@ -62,10 +63,10 @@ export function ProjectsSection() {
       {/* Galaxy Background Animation */}
       <div className="absolute inset-0 z-0 opacity-50 pointer-events-none mix-blend-screen">
         <Suspense fallback={null}>
-          <Galaxy
+          <MemoizedGalaxy
             mouseRepulsion={true}
             mouseInteraction={true}
-            density={1.5}
+            density={1.0}
             glowIntensity={0.5}
             saturation={0.8}
             hueShift={240}
