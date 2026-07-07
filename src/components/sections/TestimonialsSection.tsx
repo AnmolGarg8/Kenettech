@@ -40,11 +40,8 @@ export function TestimonialsSection() {
         </Reveal>
 
         <Reveal direction="up" delay={0.2}>
-          <p className="text-[20px] md:text-[28px] lg:text-[32px] font-display font-semibold text-white leading-relaxed mb-8 max-w-4xl mx-auto">
+          <p className="text-[20px] md:text-[28px] lg:text-[32px] font-display font-semibold text-white leading-relaxed mb-16 max-w-4xl mx-auto">
             "Kenet Technologies transformed our business operations. They didn't just build a custom software platform—they took the time to deeply understand our challenges and delivered an elegant, lightning-fast, and scalable solution. Their technical expertise is truly unmatched."
-          </p>
-          <p className="text-[15px] font-bold text-white mb-16">
-            Elena Rodriguez - <span className="text-white/60 font-medium">Founder & CEO, TechFlow</span>
           </p>
         </Reveal>
 
