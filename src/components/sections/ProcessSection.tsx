@@ -81,7 +81,7 @@ export function ProcessSection() {
         <Reveal direction="up" delay={0.2}>
           <div className="w-full aspect-[21/9] md:aspect-[24/8] rounded-2xl overflow-hidden mb-12 relative border border-white/5">
             <img 
-              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000" 
+              src="/workflow/workflow-banner.png" 
               alt="Professional Design Process" 
               className="w-full h-full object-cover"
               loading="lazy"
@@ -99,15 +99,15 @@ export function ProcessSection() {
                 <div className="relative p-8 rounded-xl bg-[#0a0a0a] border border-white/10 flex flex-col h-full overflow-hidden group hover:border-white/30 transition-colors">
                   
                   {/* Internal Effect */}
-                  <div className="absolute inset-0 z-0 opacity-30 group-hover:opacity-60 transition-opacity duration-700">
+                  <div className="absolute inset-0 z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-700">
                     <img 
                       src={step.img} 
                       alt="Effect" 
-                      className="w-full h-full object-cover mix-blend-screen filter grayscale-[50%] brightness-110"
+                      className="w-full h-full object-cover"
                     />
                     {/* Glow and Fade to make text readable */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#f97316]/10 mix-blend-color group-hover:opacity-100 opacity-0 transition-opacity duration-700"></div>
-                    <div className="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a] via-[#0a0a0a]/90 to-[#0a0a0a]/20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-[#0a0a0a]/10"></div>
                   </div>
 
                   <div className="relative z-10">
@@ -130,16 +130,16 @@ export function ProcessSection() {
               <div className="relative p-8 rounded-xl bg-[#0a0a0a] border border-white/10 flex flex-col overflow-hidden group hover:border-white/30 transition-colors">
                   
                 {/* Internal Effect */}
-                <div className="absolute inset-0 z-0 opacity-30 group-hover:opacity-60 transition-opacity duration-700">
+                <div className="absolute inset-0 z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-700">
                   <img 
                     src={step.img} 
                     alt="Effect" 
-                    className="w-full h-full object-cover mix-blend-screen filter grayscale-[50%] brightness-110"
+                    className="w-full h-full object-cover"
                     style={step.num === "05" ? { objectPosition: 'center bottom' } : {}}
                   />
                   {/* Glow and Fade to make text readable */}
                   <div className="absolute inset-0 bg-gradient-to-r from-[#9d4edd]/10 via-transparent to-[#ec4899]/10 mix-blend-color group-hover:opacity-100 opacity-0 transition-opacity duration-700"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 to-[#0a0a0a]/20"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/60 to-[#0a0a0a]/10"></div>
                 </div>
 
                 <div className="relative z-10">
