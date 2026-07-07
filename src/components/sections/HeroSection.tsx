@@ -3,7 +3,7 @@ import { Reveal } from '../ui/Reveal';
 export function HeroSection() {
   const logos = [
     { name: "TOP 10 — SAMSUNG SOLVE FOR TOMORROW 2025", img: null },
-    { name: "1ST PLACE — SUPERNOVA HACKATHON", img: null },
+    { name: "TRUSTED BY 50+ COMPANIES", img: null },
     { name: "NATIONAL FINALIST — INDIA INNOVATES 2026", img: null },
     { name: "PITCHED AT FITT, IIT DELHI", img: null },
   ];
@@ -77,25 +77,11 @@ export function HeroSection() {
           <div className="absolute top-0 left-0 w-32 md:w-64 h-full bg-gradient-to-r from-[#000000] to-transparent z-10 pointer-events-none"></div>
           <div className="absolute top-0 right-0 w-32 md:w-64 h-full bg-gradient-to-l from-[#000000] to-transparent z-10 pointer-events-none"></div>
           
-          <div className="flex animate-marquee whitespace-nowrap min-w-full items-center justify-around">
-            {logos.map((logo, idx) => (
+          <div className="flex animate-marquee whitespace-nowrap w-max items-center">
+            {/* We duplicate the array 4 times to ensure it's wide enough for any screen, 
+                and since the animation translates -50%, it perfectly loops 2 copies. */}
+            {[...logos, ...logos, ...logos, ...logos].map((logo, idx) => (
               <div key={idx} className="mx-8 md:mx-12 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0">
-                 {logo.img ? (
-                    <div className="flex items-center space-x-3">
-                       <img src={logo.img} alt={logo.name} className="h-6 md:h-8 object-contain filter invert opacity-80" />
-                       <span className="text-[16px] md:text-[18px] font-display font-medium text-white">{logo.name}</span>
-                    </div>
-                 ) : (
-                    <span className="text-[16px] md:text-[20px] font-display font-medium tracking-wide text-white">
-                      {logo.name}
-                    </span>
-                 )}
-              </div>
-            ))}
-          </div>
-          <div className="flex animate-marquee whitespace-nowrap min-w-full absolute left-full top-0 items-center justify-around h-full">
-            {logos.map((logo, idx) => (
-               <div key={`dup-${idx}`} className="mx-8 md:mx-12 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0">
                  {logo.img ? (
                     <div className="flex items-center space-x-3">
                        <img src={logo.img} alt={logo.name} className="h-6 md:h-8 object-contain filter invert opacity-80" />
